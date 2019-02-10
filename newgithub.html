@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>product mangment</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <style>
+        nav
+        table {
+            text-overflow: unset
+        }
+
+        th {
+            background-color: RoyalBlue;
+            color: lavenderblush;
+            border-collapse: separate
+        }
+    </style>
+</head>
+<body style="">
+    <div class="pure-menu pure-menu-horizontal pure-menu-scrollable" style="font-size: x-large;text-decoration: none;animation-direction: alternate-reverse">
+        <a href="#" class="pure-menu-link pure-menu-heading"> <img src="adss/gizeh_accessories.png" style="width:100px;height: 70px" />CEO</a>
+
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="http://localhost:53861/HtmlPage.html" class="pure-menu-link">Home</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Flickr</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Messenger</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sports</a></li>
+        </ul>
+    </div>
+
+    <!---- <div class='alert alert-danger alert-dismissible'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>No Match Found!</strong>  The value you entered returned no match</div>-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="panel panel-primary" style="top:0">
+
+
+                    <input type="text" placeholder="Search.." id="search"><button class="pure-button pure-button-primary" onclick="saerchfn()">Search</button><br />
+                    <p>Suggestions: <span id="txtHint"></span></p>
+
+                    <div>
+
+                        <div class="panel-heading">Products</div>
+                        <div class="panel-body">
+                            <div id="alertDiv"></div>
+                            <div class="form-group">
+                                <div class="row-xs-2">
+                                    <label>ProductID:</label>
+                                    <input type="text" id="txtProductID" class="form-control">
+                                </div>
+                                <div class="row-xs-2">
+                                    <label>ProductName</label>
+                                    <input type="text" id="txtProductName" class="form-control">
+                                </div>
+                                <div class="row-xs-2">
+                                    <label>ProductPrice</label>
+                                    <input type="text" id="txtProductPrice" class="form-control">
+                                </div>
+                                <div class="row-xs-2">
+                                    <label>ProductQuantity</label>
+                                    <input type="text" id="txtProductQuantity" class="form-control">
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <p>
+                                    <input class="pure-button pure-button-primary" type="button" onclick="previous()" value="<<" style="">
+
+                                    <input class="pure-button pure-button-primary" type="button" onclick="next()" value=">>" style="">
+                                    <input class="pure-button pure-button-primary" type="button" onclick="Last()" value="Last" style="">
+                                    <input class="pure-button pure-button-primary" type="button" onclick="First()" value="First" style="">
+                                </p>
+
+                                <input class="pure-button pure-button-primary" id="update" type="button" value="Update" onclick="btnUpdate('upd')" />
+                                <input class="pure-button pure-button-primary" id="Delete" type="button" value="Delete" onclick="btnUpdate('del')" />
+                                <input class="pure-button pure-button-primary" id="insert" type="button" value="insert" onclick="btnUpdate('insert')" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--productpicture <input type="text" id="txtproductpicture" />-->
+            </div>
+            <div id="mydiv" class="col-sm-6">
+
+
+
+                <table id="demo" class="table table-hover" style="background-color:white;align-self: center"></table>
+            </div>
+            <div class="col-sm-3">
+
+                <div class="well">
+
+
+
+                    <img id="pic" src="adss\8xRX.gif" style="width: 225px;height: 625px;border-top-style: inset" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <hr />
+        <div class="footer" style="width: 1800px;height: auto;border-style:outset">
+            <p align="center">
+                <b> CONTACT</b><br />
+                GIZEH Raucherbedarf GmbH <br />
+                Bunsenstr. 12 <br />
+                51647 Gummersbach<br />
+                Germany <br />
+
+                Fon:+49 2261-4059-0<br />
+                Fax:+49 2261-4059-305<br />
+                E-Mail: contact@gizeh-online.de
+            </p>
+        </div>
+    </div>
+    <script src="saerchpro.js"></script>
+    <script>
+
+        const myads = ["8xRX.gif", "gstz3ah.png", "koniak.png", "movie.jpg", "doritos.png"]
+        let myx = 0;
+
+
+        const myadsd = function () {
+
+
+            document.getElementById("pic").src = "adss" + "\\" + myads[myx++];
+            if (myx == 4) {
+                myx = 0;
+            }
+
+        }
+        setInterval(myadsd, 3000);
+
+    </script>
+</body>
+</html>
